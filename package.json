@@ -1,0 +1,28 @@
+{
+  "dependencies": {
+    "@types/lodash": "^4.17.16",
+    "@types/react-router-dom": "^5.3.3",
+    "@types/styled-components": "^5.1.34",
+    "gsap": "^3.12.7",
+    "lodash": "^4.17.21",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "react-router-dom": "^7.4.1",
+    "styled-components": "^6.1.17"
+  },
+  "homepage": "https://benjaminkakar.github.io/portfolio",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
+  },
+  "devDependencies": {
+    "@types/react": "^19.0.12",
+    "@types/react-dom": "^19.0.4",
+    "@vitejs/plugin-react": "^4.3.4",
+    "gh-pages": "^6.1.1",
+    "typescript": "^5.8.2",
+    "vite": "^6.2.3"
+  }
+}
