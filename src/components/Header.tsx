@@ -42,62 +42,6 @@ const Header: React.FC = () => {
         display: 'flex',
         gap: '3rem',
       }}>
-        {[
-          { path: '/', label: 'Home' },
-          { path: '/services', label: 'Services' },
-          { path: '/profile', label: 'Profile' }
-        ].map(({ path, label }) => (
-          <Link 
-            key={path}
-            to={path} 
-            style={{
-              ...linkStyle,
-              color: isActive(path) ? '#fff' : 'rgba(255, 255, 255, 0.6)',
-              position: 'relative',
-            }}
-            onMouseEnter={e => {
-              if (!isActive(path)) {
-                e.currentTarget.style.color = '#fff';
-              }
-            }}
-            onMouseLeave={e => {
-              if (!isActive(path)) {
-                e.currentTarget.style.color = 'rgba(255, 255, 255, 0.6)';
-              }
-            }}
-          >
-            {label}
-            <span style={{
-              position: 'absolute',
-              bottom: '-4px',
-              left: 0,
-              width: isActive(path) ? '100%' : '0',
-              height: '1px',
-              background: '#fff',
-              transition: 'width 0.2s ease',
-              opacity: isActive(path) ? 1 : 0,
-            }} />
-            <span style={{
-              position: 'absolute',
-              bottom: '-4px',
-              left: 0,
-              width: '0',
-              height: '1px',
-              background: '#fff',
-              transition: 'width 0.2s ease',
-              opacity: 0,
-            }}
-            onMouseEnter={e => {
-              e.currentTarget.style.width = '100%';
-              e.currentTarget.style.opacity = '1';
-            }}
-            onMouseLeave={e => {
-              e.currentTarget.style.width = '0';
-              e.currentTarget.style.opacity = '0';
-            }}
-            />
-          </Link>
-        ))}
       </div>
     </header>
   );

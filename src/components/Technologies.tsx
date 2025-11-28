@@ -40,7 +40,6 @@ const Technologies: React.FC = () => {
     { name: 'Firebase', logo: firebaseLogo },
     { name: 'GitHub', logo: githubLogo },
     { name: 'Entity Framework', logo: efLogo },
-    { name: 'PostgreSQL', logo: postgresLogo },
     { name: 'Umbraco', logo: umbracoLogo },
     { name: 'MySQL', logo: mysqlLogo },
     { name: 'Postman', logo: postmanLogo },
@@ -52,33 +51,35 @@ const Technologies: React.FC = () => {
     {
       icon: '{ }',
       title: 'Full-Stack Development',
-      description: 'Modern, scalable applications built with enterprise-grade technologies. Focus on maintainability and performance.',
+      description: 'Building robust and scalable web applications from front-end to back-end, with a focus on clean code and user-friendly experiences.',
       features: [
-        'Industry expert in C# and Java Enterprise Development',
-        'TypeScript & React expertise',
-        'Cloud-native solutions'
+        'Expertise in C#, .NET Core, and ASP.NET.',
+        'Modern front-ends with TypeScript, React, and Blazor.',
+        'Databases: MSSQL, MySQL, and Firebase.'
       ],
-      link: 'View Full-Stack Services'
+      link: 'Explore Development Services'
     },
     {
-      icon: '🧠',
-      title: 'AI & ML Solutions',
-      description: 'Custom AI implementations that solve specific business challenges. Specializing in LLMs and optimization algorithms.',
+      icon: '⚙️',
+      title: 'System Integration & Automation',
+      description: 'Designing and maintaining robust APIs and automated services to streamline workflows and improve data communication between systems.',
       features: [
-        'LLM-powered support systems with 80%+ accuracy',
-        'Custom ML models'
+        'Integration with critical systems like MitID and e-Boks.',
+        'RESTful API design and development.',
+        'Automated services to eliminate manual tasks.'
       ],
-      link: 'View AI Solutions'
+      link: 'Discover Integration Solutions'
     },
     {
-      icon: '🔧',
-      title: 'System Architecture',
-      description: 'Cloud-native architectures and legacy system modernization. Professional within AWS infrastructure.',
+      icon: '☁️',
+      title: 'System Architecture & Cloud',
+      description: 'Applying Clean Architecture and SOLID principles to create modular, testable, and maintainable software solutions, deployed on Azure.',
       features: [
-        'Part of driving mainframe to cloud migrations',
-        'Experienced service owner and security engineer on AWS'
+        'Expertise in Clean Architecture and SOLID principles.',
+        'Azure Cloud Deployment.',
+        'CI/CD with GitHub Actions.'
       ],
-      link: 'View Architecture Services'
+      link: 'Learn about Architecture'
     }
   ];
 
@@ -103,7 +104,7 @@ const Technologies: React.FC = () => {
         opacity: 0.8,
         fontSize: '1.1rem',
       }}>
-        Leveraging modern technologies to build robust, scalable solutions for your business needs.
+        I leverage a modern tech stack to build robust, scalable, and secure solutions. My expertise spans across the entire development lifecycle, from initial design to deployment and maintenance.
       </p>
 
       <div style={{
@@ -161,7 +162,7 @@ const Technologies: React.FC = () => {
           marginBottom: '1rem',
           fontFamily: 'monospace',
         }}>
-          Ways I Can Help Your Business
+          My Backend Development Services
         </h2>
         <p style={{
           maxWidth: '800px',
@@ -169,7 +170,7 @@ const Technologies: React.FC = () => {
           opacity: 0.8,
           fontSize: '1.1rem',
         }}>
-          Let's work together to create solutions - I can help you with the following:
+          I offer a range of backend development services to help you build and maintain the engine of your application.
         </p>
 
         <div style={{
@@ -179,7 +180,38 @@ const Technologies: React.FC = () => {
           maxWidth: '1200px',
           margin: '0 auto',
         }}>
-          {serviceCards.map((card, index) => (
+          {[
+            {
+              icon: '</>',
+              title: 'API Development & Integration',
+              description: 'I design and build secure, scalable, and well-documented RESTful APIs that power your applications and facilitate seamless communication between systems.',
+              features: [
+                'RESTful API design and development.',
+                'Integration with third-party services.',
+                'API security and authentication.'
+              ]
+            },
+            {
+              icon: '⚙️',
+              title: 'System Architecture & Design',
+              description: 'I apply proven architectural patterns and principles like SOLID and Clean Architecture to create backend systems that are modular, testable, and easy to maintain.',
+              features: [
+                'Clean Architecture and SOLID principles.',
+                'Microservices and monolithic architectures.',
+                'Database design and optimization.'
+              ]
+            },
+            {
+              icon: '☁️',
+              title: 'Cloud & DevOps',
+              description: 'I have experience in deploying and managing backend services on cloud platforms like Azure, and I can help you set up CI/CD pipelines to automate your development workflow.',
+              features: [
+                'Azure Cloud deployment and services.',
+                'CI/CD with GitHub Actions.',
+                'Docker and containerization.'
+              ]
+            }
+          ].map((card, index) => (
             <div
               key={index}
               style={{
@@ -190,6 +222,9 @@ const Technologies: React.FC = () => {
                 border: '1px solid rgba(255, 255, 255, 0.1)',
                 transition: 'transform 0.2s ease, border-color 0.2s ease',
                 cursor: 'pointer',
+                display: 'flex',
+                flexDirection: 'column',
+                height: '100%',
               }}
               onMouseEnter={e => {
                 e.currentTarget.style.transform = 'translateY(-5px)';
@@ -214,6 +249,7 @@ const Technologies: React.FC = () => {
                 opacity: 0.8, 
                 marginBottom: '2rem',
                 lineHeight: 1.6,
+                flexGrow: 1,
               }}>
                 {card.description}
               </p>
@@ -238,18 +274,6 @@ const Technologies: React.FC = () => {
                   </li>
                 ))}
               </ul>
-              <a
-                href="#"
-                style={{
-                  color: '#FFB800',
-                  textDecoration: 'none',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '0.5rem',
-                }}
-              >
-                {card.link} →
-              </a>
             </div>
           ))}
         </div>

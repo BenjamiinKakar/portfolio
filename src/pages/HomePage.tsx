@@ -4,7 +4,6 @@ import Technologies from '../components/Technologies';
 import ParticleBackground from '../components/ParticleBackground';
 import Projects from '../components/Projects';
 import Contact from '../components/Contact';
-import Testimonials from '../components/Testimonials';
 
 const HomePage: React.FC = () => {
   return (
@@ -18,7 +17,6 @@ const HomePage: React.FC = () => {
         <Hero />
         <Technologies />
         <Projects />
-        <Testimonials />
         <Contact />
       </main>
     </>

@@ -3,25 +3,28 @@ import React from 'react';
 const Projects: React.FC = () => {
   const projects = [
     {
-      title: 'Enterprise Resource Planning System',
-      description: 'A comprehensive ERP solution built with .NET Core and React, handling inventory, HR, and financial management.',
-      tech: ['C#', '.NET Core', 'React', 'PostgreSQL', 'Azure'],
-      image: '/projects/erp.jpg',
-      link: '#'
+      title: 'Critical System Integrations',
+      description: 'Engineered and implemented critical system integrations with MitID and e-Boks, significantly enhancing security and efficiency for customer communications while ensuring regulatory compliance.',
+      tech: ['C#', '.NET Core', 'RESTful APIs', 'Azure', 'Security'],
+      image: '',
+      link: '#',
+      icon: '🔗'
     },
     {
-      title: 'AI-Powered Customer Support',
-      description: 'LLM-based customer support system that reduced response time by 60% and improved customer satisfaction.',
-      tech: ['Python', 'TensorFlow', 'React', 'AWS', 'Docker'],
-      image: '/projects/ai-support.jpg',
-      link: '#'
+      title: 'B2B Coupon & Loyalty System',
+      description: 'Designed and developed a scalable coupon and loyalty system for a B2B program, resulting in improved customer engagement and stronger partner relationships.',
+      tech: ['C#', '.NET Core', 'React', 'MSSQL', 'Web Development'],
+      image: '',
+      link: '#',
+      icon: '🎟️'
     },
     {
-      title: 'Cloud Migration Project',
-      description: 'Successfully migrated legacy mainframe systems to cloud-native architecture, improving performance by 200%.',
-      tech: ['Java', 'AWS', 'Docker', 'Kubernetes', 'Terraform'],
-      image: '/projects/cloud.jpg',
-      link: '#'
+      title: 'Legal Evidence Protection System',
+      description: 'Developed a scalable data cloning solution to safeguard legal evidence in customer inquiry cases, strengthening the company\'s position in potential disputes.',
+      tech: ['C#', '.NET Core', 'Data Structures', 'Algorithms', 'MSSQL'],
+      image: '',
+      link: '#',
+      icon: '🛡️'
     }
   ];
 
@@ -46,7 +49,7 @@ const Projects: React.FC = () => {
         opacity: 0.8,
         fontSize: '1.1rem',
       }}>
-        Here are some of the projects I've worked on that demonstrate my expertise in full-stack development and system architecture.
+        Here are some of the projects I've worked on that demonstrate my expertise in backend development and system architecture.
       </p>
 
       <div style={{
@@ -66,6 +69,8 @@ const Projects: React.FC = () => {
               border: '1px solid rgba(255, 255, 255, 0.1)',
               transition: 'transform 0.2s ease, border-color 0.2s ease',
               cursor: 'pointer',
+              display: 'flex',
+              flexDirection: 'column',
             }}
             onMouseEnter={e => {
               e.currentTarget.style.transform = 'translateY(-5px)';
@@ -88,13 +93,13 @@ const Projects: React.FC = () => {
                 top: '50%',
                 left: '50%',
                 transform: 'translate(-50%, -50%)',
-                fontSize: '2rem',
-                opacity: 0.5,
+                fontSize: '3rem',
+                opacity: 0.8,
               }}>
-                {project.title[0]}
+                {project.icon || project.title[0]}
               </div>
             </div>
-            <div style={{ padding: '1.5rem' }}>
+            <div style={{ padding: '1.5rem', display: 'flex', flexDirection: 'column', flexGrow: 1 }}>
               <h3 style={{
                 margin: '0 0 0.5rem 0',
                 fontSize: '1.5rem',
@@ -105,6 +110,7 @@ const Projects: React.FC = () => {
                 margin: '0 0 1rem 0',
                 opacity: 0.8,
                 lineHeight: 1.6,
+                flexGrow: 1,
               }}>
                 {project.description}
               </p>
@@ -128,19 +134,6 @@ const Projects: React.FC = () => {
                   </span>
                 ))}
               </div>
-              <a
-                href={project.link}
-                style={{
-                  color: '#64ffda',
-                  textDecoration: 'none',
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '0.5rem',
-                  fontSize: '0.9rem',
-                }}
-              >
-                View Project →
-              </a>
             </div>
           </div>
         ))}

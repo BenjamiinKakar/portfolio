@@ -11,6 +11,10 @@ const Hero: React.FC = () => {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
+  const startDate = new Date('2021-02-01');
+  const currentDate = new Date();
+  const yearsOfExperience = Math.floor((currentDate.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24 * 365.25));
+
   return (
     <section style={{
       minHeight: '100vh',
@@ -27,22 +31,13 @@ const Hero: React.FC = () => {
         width: '100%',
         padding: windowWidth <= 768 ? '0 1rem' : '0',
       }}>
-        <h2 style={{
-          color: '#FFB800',
-          margin: 0,
-          fontSize: windowWidth <= 768 ? '1rem' : '1.2rem',
-          marginBottom: '1rem',
-        }}>
-          Senior Fullstack Developer
-        </h2>
         <h1 style={{
           fontSize: windowWidth <= 768 ? '2rem' : 'clamp(2.5rem, 5vw, 4rem)',
           margin: '0 0 1.5rem 0',
           lineHeight: 1.2,
           color: '#fff',
         }}>
-          Making Technology Work<br />
-          for Your Business
+          Building Reliable and Scalable Backend Solutions
         </h1>
         <p style={{
           fontSize: windowWidth <= 768 ? '1rem' : '1.1rem',
@@ -52,29 +47,10 @@ const Hero: React.FC = () => {
           color: '#fff',
           lineHeight: 1.6,
         }}>
-          With 4 years of experience in creating user-friendly and robust systems. 
-          I find great satisfaction in bringing solutions to life and enjoy diving 
-          into technical challenges that simplify daily tasks for users.
+          I specialize in building robust and scalable backend systems. I thrive on solving complex technical challenges and delivering solutions that are both efficient and user-friendly.
+
+          Currently, I'm applying my expertise as a consultant at NNIT, where I'm engaged in a variety of projects with various clients, contributing to the development of their critical backend infrastructure.
         </p>
-        <div style={{ 
-          display: 'flex', 
-          gap: '1rem',
-          flexDirection: windowWidth <= 480 ? 'column' : 'row',
-          width: windowWidth <= 480 ? '100%' : 'auto',
-        }}>
-          <button style={{
-            ...primaryButtonStyle,
-            width: windowWidth <= 480 ? '100%' : 'auto',
-          }}>
-            Schedule Free Consultation →
-          </button>
-          <button style={{
-            ...secondaryButtonStyle,
-            width: windowWidth <= 480 ? '100%' : 'auto',
-          }}>
-            Explore Services →
-          </button>
-        </div>
       </div>
       
       <div style={{ 
@@ -87,14 +63,14 @@ const Hero: React.FC = () => {
           width: '100%',
           maxWidth: windowWidth <= 1024 ? '400px' : '500px',
           aspectRatio: '1',
-          borderRadius: '1rem',
+          borderRadius: '50%',
           overflow: 'hidden',
           margin: windowWidth <= 1024 ? '0 auto' : '0 0 0 auto',
           boxShadow: '0 20px 40px rgba(0,0,0,0.3)',
         }}>
           <img 
             src={benjaminImg}
-            alt="Benjamin Kakar - Senior Fullstack Developer"
+            alt="Benjamin Kakar - Fullstack Developer Consultant"
             style={{
               width: '100%',
               height: '100%',
@@ -121,15 +97,8 @@ const Hero: React.FC = () => {
           }}>
             Benjamin Kakar
           </h3>
-          <p style={{ 
-            margin: '0',
-            color: '#fff',
-            opacity: 0.8,
-          }}>
-            Senior Software Engineer
-          </p>
           <div style={{ marginTop: '0.5rem' }}>
-            <span style={{ color: '#FFB800', fontSize: '1.5rem' }}>4+</span>
+            <span style={{ color: '#FFB800', fontSize: '1.5rem' }}>{yearsOfExperience}+</span>
             <span style={{ marginLeft: '0.5rem', color: '#fff' }}>Years of Experience</span>
           </div>
         </div>

@@ -1,16 +1,50 @@
 import React, { useState } from 'react';
 
 const Contact: React.FC = () => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [statusMessage, setStatusMessage] = useState('');
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
+    phoneNumber: '',
     message: ''
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission
-    console.log('Form submitted:', formData);
+    setIsSubmitting(true);
+    setStatusMessage('Sending...');
+
+    const data = new FormData();
+    data.append('name', formData.name);
+    data.append('email', formData.email);
+    data.append('phoneNumber', formData.phoneNumber);
+    data.append('message', formData.message);
+    data.append('_replyto', formData.email);
+
+
+    try {
+      const response = await fetch('https://formspree.io/f/mnnkvley', {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json'
+        },
+        body: data
+      });
+
+      if (response.ok) {
+        setStatusMessage('Message sent successfully!');
+        setFormData({ name: '', email: '', message: ''});
+      } else {
+        setStatusMessage('Failed to send message. Please try again.');
+      }
+    } catch (error) {
+      console.error('Form submission error:', error);
+      setStatusMessage('Failed to send message. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -45,80 +79,10 @@ const Contact: React.FC = () => {
       </p>
 
       <div style={{
-        display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-        gap: '4rem',
-        maxWidth: '1200px',
+        maxWidth: '800px',
         margin: '0 auto',
+        alignItems: 'start'
       }}>
-        <div>
-          <h3 style={{
-            fontSize: '1.5rem',
-            marginBottom: '1.5rem',
-          }}>
-            Contact Information
-          </h3>
-          <div style={{
-            display: 'flex',
-            flexDirection: 'column',
-            gap: '1.5rem',
-          }}>
-            <div>
-              <h4 style={{
-                fontSize: '1.1rem',
-                marginBottom: '0.5rem',
-                color: '#64ffda',
-              }}>
-                Email
-              </h4>
-              <p style={{ margin: 0, opacity: 0.8 }}>
-                benjaminkakar@gmail.com
-              </p>
-            </div>
-            <div>
-              <h4 style={{
-                fontSize: '1.1rem',
-                marginBottom: '0.5rem',
-                color: '#64ffda',
-              }}>
-                Location
-              </h4>
-              <p style={{ margin: 0, opacity: 0.8 }}>
-                Copenhagen, Denmark
-              </p>
-            </div>
-            <div>
-              <h4 style={{
-                fontSize: '1.1rem',
-                marginBottom: '0.5rem',
-                color: '#64ffda',
-              }}>
-                Social Links
-              </h4>
-              <div style={{
-                display: 'flex',
-                gap: '1rem',
-              }}>
-                <a
-                  href="https://www.linkedin.com/in/benjamin-kakar/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={{
-                    color: '#fff',
-                    textDecoration: 'none',
-                    opacity: 0.8,
-                    transition: 'opacity 0.2s',
-                  }}
-                  onMouseEnter={e => e.currentTarget.style.opacity = '1'}
-                  onMouseLeave={e => e.currentTarget.style.opacity = '0.8'}
-                >
-                  LinkedIn
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-
         <form
           onSubmit={handleSubmit}
           style={{
@@ -136,7 +100,7 @@ const Contact: React.FC = () => {
                 color: '#64ffda',
               }}
             >
-              Name
+              Your Name
             </label>
             <input
               type="text"
@@ -144,6 +108,7 @@ const Contact: React.FC = () => {
               name="name"
               value={formData.name}
               onChange={handleChange}
+              required
               style={{
                 width: '100%',
                 padding: '0.75rem',
@@ -164,7 +129,7 @@ const Contact: React.FC = () => {
                 color: '#64ffda',
               }}
             >
-              Email
+              Your Email
             </label>
             <input
               type="email"
@@ -172,6 +137,36 @@ const Contact: React.FC = () => {
               name="email"
               value={formData.email}
               onChange={handleChange}
+              required
+              style={{
+                width: '100%',
+                padding: '0.75rem',
+                background: 'rgba(255, 255, 255, 0.05)',
+                border: '1px solid rgba(255, 255, 255, 0.1)',
+                borderRadius: '0.5rem',
+                color: '#fff',
+                fontSize: '1rem',
+              }}
+            />
+          </div>
+          <div>
+            <label
+              htmlFor="phoneNumber"
+              style={{
+                display: 'block',
+                marginBottom: '0.5rem',
+                color: '#64ffda',
+              }}
+            >
+              Your Phone Number
+            </label>
+            <input
+              type="tel" // Changed type to "tel" for phone numbers
+              id="phoneNumber"
+              name="phoneNumber"
+              value={formData.phoneNumber}
+              onChange={handleChange}
+              required
               style={{
                 width: '100%',
                 padding: '0.75rem',
@@ -200,6 +195,7 @@ const Contact: React.FC = () => {
               value={formData.message}
               onChange={handleChange}
               rows={5}
+              required
               style={{
                 width: '100%',
                 padding: '0.75rem',
@@ -212,28 +208,43 @@ const Contact: React.FC = () => {
               }}
             />
           </div>
-          <button
-            type="submit"
-            style={{
-              background: '#64ffda',
-              color: '#0f172a',
-              border: 'none',
-              padding: '1rem 2rem',
-              borderRadius: '0.5rem',
-              fontSize: '1rem',
-              cursor: 'pointer',
-              fontWeight: 500,
-              transition: 'transform 0.2s',
-            }}
-            onMouseEnter={e => e.currentTarget.style.transform = 'translateY(-2px)'}
-            onMouseLeave={e => e.currentTarget.style.transform = 'translateY(0)'}
-          >
-            Send Message
-          </button>
+          <div style={{ display: 'flex', justifyContent: 'center' }}>
+            <button
+              type="submit"
+              disabled={isSubmitting}
+              style={{
+                background: '#64ffda',
+                color: '#0f172a',
+                border: 'none',
+                padding: '1rem 2rem',
+                borderRadius: '0.5rem',
+                fontSize: '1rem',
+                cursor: isSubmitting ? 'not-allowed' : 'pointer',
+                fontWeight: 500,
+                transition: 'transform 0.2s, opacity 0.2s',
+                opacity: isSubmitting ? 0.7 : 1,
+              }}
+              onMouseEnter={e => e.currentTarget.style.transform = 'translateY(-2px)'}
+              onMouseLeave={e => e.currentTarget.style.transform = 'translateY(0)'}
+            >
+              {isSubmitting ? 'Sending...' : 'Send Message'}
+            </button>
+          </div>
+          {statusMessage && (
+            <p style={{
+              textAlign: 'center',
+              marginTop: '1rem',
+              color: statusMessage.includes('successfully') ? '#64ffda' : '#ff6b6b',
+            }}>
+              {statusMessage}
+            </p>
+          )}
         </form>
+
       </div>
     </section>
   );
 };
 
-export default Contact; 
+export default Contact;
+ 

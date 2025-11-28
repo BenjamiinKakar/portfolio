@@ -10,18 +10,13 @@
     "react-router-dom": "^7.4.1",
     "styled-components": "^6.1.17"
   },
-  "homepage": "https://benjaminkakar.github.io/portfolio",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "dev": "vite"
   },
   "devDependencies": {
     "@types/react": "^19.0.12",
     "@types/react-dom": "^19.0.4",
     "@vitejs/plugin-react": "^4.3.4",
-    "gh-pages": "^6.1.1",
     "typescript": "^5.8.2",
     "vite": "^6.2.3"
   }
