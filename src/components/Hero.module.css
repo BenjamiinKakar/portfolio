@@ -1,0 +1,123 @@
+.hero {
+  min-height: 100vh;
+  display: flex;
+  padding: 7rem 5% 2rem;
+  align-items: center;
+  position: relative;
+  gap: 4rem;
+  flex-direction: row;
+}
+
+.heroContent {
+  flex: 1;
+  max-width: 600px;
+  width: 100%;
+  padding: 0;
+}
+
+.heroTitle {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  margin: 0 0 1.5rem 0;
+  line-height: 1.2;
+  color: #fff;
+}
+
+.heroText {
+  font-size: 1.1rem;
+  max-width: 600px;
+  margin-bottom: 2rem;
+  opacity: 0.8;
+  color: #fff;
+  line-height: 1.6;
+}
+
+.heroImageContainer {
+  flex: 1;
+  position: relative;
+  width: 100%;
+}
+
+.heroImageWrapper {
+  width: 100%;
+  max-width: 500px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 0 0 0 auto;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+}
+
+.heroImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.heroCard {
+  position: absolute;
+  bottom: 2rem;
+  right: 2rem;
+  background: rgba(22, 24, 28, 0.95);
+  padding: 1.5rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px);
+}
+
+.heroCardTitle {
+  margin: 0 0 0.5rem 0;
+  color: #fff;
+  font-size: 1.2rem;
+}
+
+.heroCardExperience {
+  margin-top: 0.5rem;
+}
+
+.heroCardYears {
+  color: #FFB800;
+  font-size: 1.5rem;
+}
+
+.heroCardText {
+  margin-left: 0.5rem;
+  color: #fff;
+}
+
+@media (max-width: 1024px) {
+  .hero {
+    flex-direction: column;
+    padding-top: 5rem;
+  }
+
+  .heroImageContainer {
+    margin-top: 2rem;
+  }
+
+  .heroImageWrapper {
+    max-width: 400px;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .heroContent {
+    padding: 0 1rem;
+  }
+
+  .heroTitle {
+    font-size: 2rem;
+  }
+
+  .heroText {
+    font-size: 1rem;
+  }
+
+  .heroCard {
+    bottom: 1rem;
+    right: 1rem;
+    padding: 1rem;
+    max-width: calc(100% - 2rem);
+  }
+}

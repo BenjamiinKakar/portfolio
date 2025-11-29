@@ -1,0 +1,126 @@
+.contact {
+  padding: 7rem 5%;
+  background: #0f172a;
+  color: #fff;
+}
+
+.title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  text-align: center;
+  margin-bottom: 1rem;
+  font-family: monospace;
+}
+
+.subtitle {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 4rem;
+  opacity: 0.8;
+  font-size: 1.1rem;
+}
+
+.formContainer {
+  max-width: 800px;
+  margin: 0 auto;
+  align-items: start;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.formGroup {
+  /* No specific styles needed here, but can be used for future adjustments */
+}
+
+.label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #64ffda;
+}
+
+.input,
+.textarea {
+  width: 100%;
+  padding: 0.75rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.5rem;
+  color: #fff;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+.textarea {
+  resize: vertical;
+}
+
+.submitButtonContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.submitButton {
+  background: #64ffda;
+  color: #0f172a;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  font-weight: 500;
+  transition: transform 0.2s, opacity 0.2s;
+}
+
+.submitButton:disabled {
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.submitButton:not(:disabled):hover {
+  transform: translateY(-2px);
+}
+
+.statusMessage {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.statusMessageSuccess {
+  color: #64ffda;
+}
+
+.statusMessageError {
+  color: #ff6b6b;
+}
+
+@media (max-width: 768px) {
+  .contact {
+    padding: 3rem 5%;
+  }
+
+  .title {
+    font-size: 2.2rem;
+  }
+
+  .subtitle {
+    margin-bottom: 2rem;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact {
+    padding: 2rem 5%;
+  }
+
+  .title {
+    font-size: 1.8rem;
+  }
+
+  .subtitle {
+    margin-bottom: 1.5rem;
+  }
+}

@@ -1,0 +1,34 @@
+.header {
+  padding: 1.5rem 5%;
+  display: flex;
+  align-items: center;
+  background: #16181C;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 10;
+  box-sizing: border-box;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.logo {
+  text-decoration: none;
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+  opacity: 0.9;
+  transition: opacity 0.2s ease;
+}
+
+.logo:hover {
+  opacity: 1;
+}
+
+.nav {
+  margin-left: auto;
+  display: flex;
+  gap: 3rem;
+}

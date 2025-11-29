@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import styles from './Contact.module.css';
 
 const Contact: React.FC = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -35,7 +36,7 @@ const Contact: React.FC = () => {
 
       if (response.ok) {
         setStatusMessage('Message sent successfully!');
-        setFormData({ name: '', email: '', message: ''});
+        setFormData({ name: '', email: '', phoneNumber: '', message: ''});
       } else {
         setStatusMessage('Failed to send message. Please try again.');
       }
@@ -55,50 +56,23 @@ const Contact: React.FC = () => {
   };
 
   return (
-    <section style={{
-      padding: '7rem 5%',
-      background: '#0f172a',
-      color: '#fff',
-    }}>
-      <h2 style={{
-        fontSize: 'clamp(2rem, 4vw, 3rem)',
-        textAlign: 'center',
-        marginBottom: '1rem',
-        fontFamily: 'monospace',
-      }}>
+    <section className={styles.contact}>
+      <h2 className={styles.title}>
         Get In Touch
       </h2>
-      <p style={{
-        textAlign: 'center',
-        maxWidth: '800px',
-        margin: '0 auto 4rem',
-        opacity: 0.8,
-        fontSize: '1.1rem',
-      }}>
+      <p className={styles.subtitle}>
         Have a project in mind? Let's discuss how I can help bring your ideas to life.
       </p>
 
-      <div style={{
-        maxWidth: '800px',
-        margin: '0 auto',
-        alignItems: 'start'
-      }}>
+      <div className={styles.formContainer}>
         <form
           onSubmit={handleSubmit}
-          style={{
-            display: 'flex',
-            flexDirection: 'column',
-            gap: '1.5rem',
-          }}
+          className={styles.form}
         >
-          <div>
+          <div className={styles.formGroup}>
             <label
               htmlFor="name"
-              style={{
-                display: 'block',
-                marginBottom: '0.5rem',
-                color: '#64ffda',
-              }}
+              className={styles.label}
             >
               Your Name
             </label>
@@ -109,25 +83,13 @@ const Contact: React.FC = () => {
               value={formData.name}
               onChange={handleChange}
               required
-              style={{
-                width: '100%',
-                padding: '0.75rem',
-                background: 'rgba(255, 255, 255, 0.05)',
-                border: '1px solid rgba(255, 255, 255, 0.1)',
-                borderRadius: '0.5rem',
-                color: '#fff',
-                fontSize: '1rem',
-              }}
+              className={styles.input}
             />
           </div>
-          <div>
+          <div className={styles.formGroup}>
             <label
               htmlFor="email"
-              style={{
-                display: 'block',
-                marginBottom: '0.5rem',
-                color: '#64ffda',
-              }}
+              className={styles.label}
             >
               Your Email
             </label>
@@ -138,54 +100,30 @@ const Contact: React.FC = () => {
               value={formData.email}
               onChange={handleChange}
               required
-              style={{
-                width: '100%',
-                padding: '0.75rem',
-                background: 'rgba(255, 255, 255, 0.05)',
-                border: '1px solid rgba(255, 255, 255, 0.1)',
-                borderRadius: '0.5rem',
-                color: '#fff',
-                fontSize: '1rem',
-              }}
+              className={styles.input}
             />
           </div>
-          <div>
+          <div className={styles.formGroup}>
             <label
               htmlFor="phoneNumber"
-              style={{
-                display: 'block',
-                marginBottom: '0.5rem',
-                color: '#64ffda',
-              }}
+              className={styles.label}
             >
               Your Phone Number
             </label>
             <input
-              type="tel" // Changed type to "tel" for phone numbers
+              type="tel"
               id="phoneNumber"
               name="phoneNumber"
               value={formData.phoneNumber}
               onChange={handleChange}
               required
-              style={{
-                width: '100%',
-                padding: '0.75rem',
-                background: 'rgba(255, 255, 255, 0.05)',
-                border: '1px solid rgba(255, 255, 255, 0.1)',
-                borderRadius: '0.5rem',
-                color: '#fff',
-                fontSize: '1rem',
-              }}
+              className={styles.input}
             />
           </div>
-          <div>
+          <div className={styles.formGroup}>
             <label
               htmlFor="message"
-              style={{
-                display: 'block',
-                marginBottom: '0.5rem',
-                color: '#64ffda',
-              }}
+              className={styles.label}
             >
               Message
             </label>
@@ -196,46 +134,20 @@ const Contact: React.FC = () => {
               onChange={handleChange}
               rows={5}
               required
-              style={{
-                width: '100%',
-                padding: '0.75rem',
-                background: 'rgba(255, 255, 255, 0.05)',
-                border: '1px solid rgba(255, 255, 255, 0.1)',
-                borderRadius: '0.5rem',
-                color: '#fff',
-                fontSize: '1rem',
-                resize: 'vertical',
-              }}
+              className={styles.textarea}
             />
           </div>
-          <div style={{ display: 'flex', justifyContent: 'center' }}>
+          <div className={styles.submitButtonContainer}>
             <button
               type="submit"
               disabled={isSubmitting}
-              style={{
-                background: '#64ffda',
-                color: '#0f172a',
-                border: 'none',
-                padding: '1rem 2rem',
-                borderRadius: '0.5rem',
-                fontSize: '1rem',
-                cursor: isSubmitting ? 'not-allowed' : 'pointer',
-                fontWeight: 500,
-                transition: 'transform 0.2s, opacity 0.2s',
-                opacity: isSubmitting ? 0.7 : 1,
-              }}
-              onMouseEnter={e => e.currentTarget.style.transform = 'translateY(-2px)'}
-              onMouseLeave={e => e.currentTarget.style.transform = 'translateY(0)'}
+              className={styles.submitButton}
             >
               {isSubmitting ? 'Sending...' : 'Send Message'}
             </button>
           </div>
           {statusMessage && (
-            <p style={{
-              textAlign: 'center',
-              marginTop: '1rem',
-              color: statusMessage.includes('successfully') ? '#64ffda' : '#ff6b6b',
-            }}>
+            <p className={`${styles.statusMessage} ${statusMessage.includes('successfully') ? styles.statusMessageSuccess : styles.statusMessageError}`}>
               {statusMessage}
             </p>
           )}
